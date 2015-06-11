@@ -1,5 +1,5 @@
 # KeyBoard
-代码包含键盘处理(解决输入多行文字高度不稳定bug)和coreData封装支持多线程，
-通过self.keyBoard = [[LYKeyBoardView alloc]initDelegate:self superView:self.view];
-一句代码你就可以拥有一个完整的键盘。本代码封装希望下载者可以直接拿到你的工程中取用，
-不需要修改太多内容。
+Keyboard handling code contains (deal with input line of text more highly unstable bug) and coreData encapsulation support multithreading,
+By (self.keyBoard = [[LYKeyBoardView alloc]initDelegate:self superView:self.view];)
+A code you can have a full keyboard. This code encapsulation want to download, you can directly to your project,
+I don't need to modify too much content.
