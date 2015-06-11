@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aZC-tf-Vqf">
+                    <rect key="frame" x="190" y="213" width="100" height="53"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="53" id="7dW-I4-AZT"/>
+                        <constraint firstAttribute="width" constant="100" id="FnK-Yg-8V0"/>
+                        <constraint firstAttribute="height" constant="53" id="Huc-Id-YDT"/>
+                        <constraint firstAttribute="width" constant="100" id="M0Z-K7-pwr"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                    <color key="textColor" red="0.1764705882" green="0.2470588235" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="7dW-I4-AZT"/>
+                            <exclude reference="M0Z-K7-pwr"/>
+                        </mask>
+                    </variation>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="aZC-tf-Vqf" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="R1J-r8-AGh"/>
+                <constraint firstItem="aZC-tf-Vqf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="213" id="TZG-59-qAv"/>
+                <constraint firstAttribute="centerY" secondItem="aZC-tf-Vqf" secondAttribute="centerY" constant="0.5" id="aoZ-N8-O6F"/>
+                <constraint firstAttribute="centerX" secondItem="aZC-tf-Vqf" secondAttribute="centerX" id="nPl-DE-E1p"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="R1J-r8-AGh"/>
+                    <exclude reference="TZG-59-qAv"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="305" y="292"/>
+        </view>
+    </objects>
+</document>
