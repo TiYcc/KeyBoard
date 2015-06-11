@@ -30,5 +30,6 @@
 -(instancetype)initDelegate:(id)delegate superView:(UIView*)superView;
 
 -(void)textViewChangeText;
+
 -(void)tapAction;
 @end
