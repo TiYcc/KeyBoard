@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>FE6A357C-A451-4510-804D-CB75BC0DED4D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>YTChatDemo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>903E540FEA9652A10B393974C6BBBEC6EB5C8454</key>
+		<string>https://github.com/TiYcc/KeyBoard.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>YTChatDemo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>903E540FEA9652A10B393974C6BBBEC6EB5C8454</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/TiYcc/KeyBoard.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>903E540FEA9652A10B393974C6BBBEC6EB5C8454</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>903E540FEA9652A10B393974C6BBBEC6EB5C8454</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KeyBaoard</string>
+		</dict>
+	</array>
+</dict>
+</plist>
