@@ -27,10 +27,19 @@ NSString *const network = @"http";
         self.name = [dic safeStringValueForKey:@"name"];
         self.Id = [dic safeStringValueForKey:@"Id"];
         self.icons = [dic safeArrayForKey:@"icons"];
-        YTEmojiNorms norms;
-        self.norms = norms;
+        self.norms = [self emojiNormsZero];
     }
     return self;
+}
+
+- (YTEmojiNorms)emojiNormsZero{
+    YTEmojiNorms norms;
+    norms.lines = 0;
+    norms.boardWH = 0.0f;
+    norms.spaceBoard = 0.0f;
+    norms.spaceHorizontalMIN = 0.0f;
+    norms.spaceVerticalityMIN = 0.0f;
+    return norms;
 }
 
 - (NSInteger)countOneLine{

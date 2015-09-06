@@ -136,13 +136,12 @@
     YTEmojiNorms norms = em.norms;
     CGFloat WH = norms.boardWH;
     CGFloat spaceB = norms.spaceBoard;
-    CGFloat spaceH = norms.spaceHorizontalMIN;
     CGFloat spaceV = norms.spaceVerticalityMIN;
     CGFloat initX = pageBt.offsetStart.x;
     NSInteger countInLine = [em countOneLine];
     NSInteger countInPage = [em countOnePage];
     NSInteger countAllPage = [em countPageAll];
-    spaceH = (WIDTH-spaceB*2-WH*countInLine)/(float)(countInLine-1);
+    CGFloat spaceH = (WIDTH-spaceB*2-WH*countInLine)/(float)(countInLine-1);
     pageBt.offsetEnd = CGPointMake(pageBt.offsetStart.x+countAllPage*WIDTH, 0);
     for (int page = 0; page < countAllPage; page++) {//多少页
         NSInteger countIndex = [em countPageIndex:page];

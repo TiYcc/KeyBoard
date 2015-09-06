@@ -33,7 +33,7 @@
         gifImage = [self imageWithData:data];
     }else{
         NSMutableArray *images = [NSMutableArray arrayWithCapacity:count];
-        for (size_t index; index < count; index++) {
+        for (size_t index = 0; index < count; index++) {
             CGImageRef imageRef = CGImageSourceCreateImageAtIndex(source, index, NULL);
             [images addObject:[UIImage imageWithCGImage:imageRef]];
             CGImageRelease(imageRef);
@@ -42,6 +42,7 @@
         NSTimeInterval duration = delayTime*count;
         gifImage = [self animatedImageWithImages:images duration:duration];
     }
+    CFRelease(source);
     return gifImage;
 }
 
