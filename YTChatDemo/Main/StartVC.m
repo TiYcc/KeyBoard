@@ -39,7 +39,7 @@
     [super viewDidAppear:animated];
     if (self.infoArray.count == 0) return;
     [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.infoArray.count-1 inSection:0] atScrollPosition:UITableViewScrollPositionBottom animated:NO];
-    typeChange = ((Message*)self.infoArray.lastObject).type.boolValue;
+    typeChange = ((Message *)self.infoArray.lastObject).type.boolValue;
 }
 
 - (void)viewDidLoad {
@@ -208,6 +208,7 @@ static NSString * cellID = @"cellID";
             }];
         }else{
             self.ImgBrower = [[YTImageBrowerController alloc]initWithDelegate:self Assets:assets PageIndex:MIN(3, assets.count-1)];
+            return ;
         }
     } failureBlock:^(NSError *error) {
         

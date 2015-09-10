@@ -12,6 +12,18 @@
 
 #define  WIDTH  ([UIScreen mainScreen].bounds.size.width)
 
+#if !defined(YT_INLINE)
+# if defined(__STDC_VERSION__) && __STDC_VERSION__ >= 199901L
+#  define YT_INLINE static inline
+# elif defined(__cplusplus)
+#  define YT_INLINE static inline
+# elif defined(__GNUC__)
+#  define YT_INLINE static __inline__
+# else
+#  define YT_INLINE static
+# endif
+#endif
+
 typedef NS_ENUM(NSInteger, YTEmojiType){
     YTEmojiTypeIcon = 0, //一般表情图片
     YTEmojiTypeChartlet  //贴图
@@ -24,7 +36,10 @@ struct YTEmojiNorms{
     CGFloat spaceHorizontalMIN;   //水平间距(min)
     CGFloat spaceVerticalityMIN;  //垂直间距(min)
 };
+
 typedef struct YTEmojiNorms YTEmojiNorms;
+
+YT_INLINE YTEmojiNorms YTEmojiNormsMake(NSUInteger lines, CGFloat boardWH, CGFloat spaceBoard, CGFloat spaceHorizontalMIN, CGFloat spaceVerticalityMIN);
 
 @interface YTEmojiM : NSObject
 
@@ -32,7 +47,7 @@ typedef struct YTEmojiNorms YTEmojiNorms;
 @property (nonatomic, strong) NSString *image; //这一类表情代表图标
 @property (nonatomic, assign) YTEmojiType type; //类型
 
-@property (nonatomic, strong, readonly) NSString *Id; //标示(来自网络还是本地)
+@property (nonatomic, strong, readonly) NSString *Id; //标示(来自网络http还是本地local)
 @property (nonatomic, strong, readonly) NSArray *icons; //表情集合
 
 @property (nonatomic, assign) YTEmojiNorms norms; //一般交于子类赋值

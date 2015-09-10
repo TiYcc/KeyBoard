@@ -12,6 +12,16 @@
 NSString *const local = @"local";
 NSString *const network = @"http";
 
+YTEmojiNorms YTEmojiNormsMake(NSUInteger lines, CGFloat boardWH, CGFloat spaceBoard, CGFloat spaceHorizontalMIN, CGFloat spaceVerticalityMIN){
+    YTEmojiNorms norms;
+    norms.lines = lines;
+    norms.boardWH = boardWH;
+    norms.spaceBoard = spaceBoard;
+    norms.spaceHorizontalMIN = spaceHorizontalMIN;
+    norms.spaceVerticalityMIN = spaceVerticalityMIN;
+    return norms;
+}
+
 @interface YTEmojiM()
 
 @property (nonatomic, strong) NSString *Id;    //标示(来自网络还是本地)
@@ -27,19 +37,9 @@ NSString *const network = @"http";
         self.name = [dic safeStringValueForKey:@"name"];
         self.Id = [dic safeStringValueForKey:@"Id"];
         self.icons = [dic safeArrayForKey:@"icons"];
-        self.norms = [self emojiNormsZero];
+        self.norms = YTEmojiNormsMake(0, 0, 0, 0, 0);
     }
     return self;
-}
-
-- (YTEmojiNorms)emojiNormsZero{
-    YTEmojiNorms norms;
-    norms.lines = 0;
-    norms.boardWH = 0.0f;
-    norms.spaceBoard = 0.0f;
-    norms.spaceHorizontalMIN = 0.0f;
-    norms.spaceVerticalityMIN = 0.0f;
-    return norms;
 }
 
 - (NSInteger)countOneLine{
