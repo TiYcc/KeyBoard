@@ -50,6 +50,7 @@
     
     /* keyBoard 一些设置全局参数 */
     BOOL kb_resign; //系统键盘已响应 响应为YES:且每次响应其值仅用一次
+    BOOL kb_visiable;
     
     /* audio(音频) 一些设置全局参数 */
     BOOL audio_beTap; //音频状态按钮是否已被点击
@@ -233,7 +234,7 @@
         [self.bottomView addSubview:visiableView];
         CGRect fram = self.frame;
         fram.origin.y =[UIScreen mainScreen].bounds.size.height- (CGRectGetHeight(visiableView.frame) + self.topView.bounds.size.height);
-        [self duration:DURTAION EndF:fram];
+        [self duration:DURTAION EndF:fram Options:UIViewAnimationOptionCurveLinear];
     }
 }
 
@@ -251,7 +252,7 @@
         self.topView.frame = frame;
         frame = self.frame;
         frame.origin.y += (top_end_h - TOP_H);
-        [self duration:0 EndF:frame];
+        [self duration:0 EndF:frame Options:UIViewAnimationOptionCurveLinear];
     }else{
         if (audio_beTap==NO) return;
         audio_beTap = NO;
@@ -262,7 +263,7 @@
         self.topView.frame = frame;
         frame = self.frame;
         frame.origin.y -= (top_end_h - TOP_H);
-        [self duration:0 EndF:frame];
+        [self duration:0 EndF:frame Options:UIViewAnimationOptionCurveLinear];
     }
     
 }
@@ -272,9 +273,10 @@
     if (kb_resign==NO) {
         CGRect endF = [[noti.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey]CGRectValue];
         CGFloat duration = [[noti.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+         UIViewAnimationOptions options = [[noti.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
         CGRect fram = self.frame;
         fram.origin.y = (endF.origin.y - _topView.frame.size.height);
-        [self duration:duration EndF:fram];
+        [self duration:duration EndF:fram Options:options];
     }else{
         kb_resign = NO;
     }
@@ -289,9 +291,10 @@
         [self.bottomView addSubview:[UIView new]];
         
         NSTimeInterval duration = [[noti.userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+        UIViewAnimationOptions options = [[noti.userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue];
         CGRect fram = self.frame;
         fram.origin.y = (endF.origin.y - _topView.frame.size.height);
-        [self duration:duration EndF:fram];
+        [self duration:duration EndF:fram Options:options];
     }else{
         kb_resign = NO;
     }
@@ -389,7 +392,7 @@
             break;
     }
     [self audioRuning:longPress];
-}\
+}
 
 #pragma mark - other logic
 - (void)topLayoutSubViewWithH:(CGFloat)hight{
@@ -405,13 +408,16 @@
     frame = self.frame;
     frame.origin.y -= diff;
     
-    [self duration:DURTAION EndF:frame];
+    [self duration:DURTAION EndF:frame Options:UIViewAnimationOptionCurveLinear];
 }
 
-- (void)duration:(CGFloat)duration EndF:(CGRect)endF{
-    [UIView animateWithDuration:duration animations:^{
+- (void)duration:(CGFloat)duration EndF:(CGRect)endF Options:(UIViewAnimationOptions)options{
+    
+    [UIView animateWithDuration:duration delay:0.0f options:options animations:^{
         kb_resign = NO;
         self.frame = endF;
+    } completion:^(BOOL finished) {
+        
     }];
     [self changeDuration:duration];
 }
@@ -433,9 +439,13 @@
 
 #pragma mark - self public api action
 - (void)tapAction{
-    UIButton * b = [[UIButton alloc]init];
-    b.selected = NO;
-    [self iconsAction:b];
+    if (![self.textView isFirstResponder]) {
+        UIButton * b = [[UIButton alloc]init];
+        b.selected = NO;
+        [self iconsAction:b];
+    }else{
+        [self.textView resignFirstResponder];
+    }
 }
 
 - (void)textChange{

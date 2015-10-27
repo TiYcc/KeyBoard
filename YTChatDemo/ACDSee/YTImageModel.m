@@ -48,8 +48,8 @@
             if (!img.image||(img.image.size.width < 1.0f)) {
                 img.image = [UIImage imageNamed:@"default_img"];
             }
+            img.http = NO;
         }
-        img.http = NO;
         img.index = i;
         img.photo = photo;
         [imgModels addObject:img];
@@ -61,16 +61,19 @@
     if ([obj isKindOfClass:[ALAsset class]]) {
         UIImage *image = [UIImage imageWithCGImage:[[obj defaultRepresentation] fullScreenImage]];
         imgModel.image = image;
-        //imgModel.url = [obj defaultRepresentation].url;
+        imgModel.url = [obj defaultRepresentation].url;
+        imgModel.http = YES;
     }else if([obj isKindOfClass:[NSURL class]]){
-        //imgModel.url = obj;
         ALAssetsLibrary *libary = [[ALAssetsLibrary alloc]init];
         [libary assetForURL:obj resultBlock:^(ALAsset *asset) {
             UIImage *image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
             imgModel.image = image;
+            imgModel.url = obj;
+            imgModel.http = YES;
         } failureBlock:^(NSError *error) {
+            imgModel.url = obj;
+            imgModel.http = NO;
         }];
-        
     }else{
         imgModel.url = nil;
         imgModel.image = [UIImage imageNamed:@"default_img"];
@@ -101,7 +104,6 @@
         CGFloat width_now = wid*(Device_Size.height/heig);
         endSize = CGSizeMake(width_now, Device_Size.height);
     }
-    
     return endSize;
 }
 

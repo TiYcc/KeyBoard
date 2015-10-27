@@ -21,6 +21,8 @@
 @property (nonatomic, strong) NSArray *imgModels;
 @property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) NSMutableArray *imgScrolls;
+@property (nonatomic, strong) NSMutableArray *dequIMGS;//
+@property (nonatomic, strong) NSMutableArray *currentIMGS;//
 @end
 
 @implementation YTImageBrowerController
@@ -28,9 +30,23 @@
 #pragma mark - INIT (一切都是为了初始化)
 - (NSMutableArray *)imgScrolls{
     if (!_imgScrolls) {
-        _imgScrolls = [NSMutableArray arrayWithCapacity:2];
+        _imgScrolls = [NSMutableArray arrayWithCapacity:3];
     }
     return _imgScrolls;
+}
+
+- (NSMutableArray *)currentIMGS{
+    if (!_currentIMGS) {
+        _currentIMGS = [NSMutableArray arrayWithCapacity:1];
+    }
+    return _currentIMGS;
+}
+
+- (NSMutableArray *)dequIMGS{
+    if (!_dequIMGS) {
+        _dequIMGS = [NSMutableArray arrayWithCapacity:2];
+    }
+    return _dequIMGS;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -112,7 +128,6 @@
 }
 
 - (void)scrollViewAddSubView{//scrollView添加内置IMGSeeScroll视图
-    
     /* 提示：当图片数大于等于2张时，目前设计为2个IMGSeeScroll进行重用，修改需谨慎 */
     for (int i = 0; i < MIN(2, self.imgModels.count); i++) {
         YTImageScroll *imageScroll = [[YTImageScroll alloc]initWithFrame:self.scrollView.bounds];
@@ -143,7 +158,7 @@
     self.scrollView.frame = self.view.bounds;
     
     CGSize size = self.scrollView.bounds.size;
-    size.width*= self.imgModels.count;
+    size.width *= self.imgModels.count;
     self.scrollView.contentSize = size;
     
     CGRect frame = self.view.bounds;

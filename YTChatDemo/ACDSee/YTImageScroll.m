@@ -120,7 +120,7 @@
         if (_imgM.isPhoto) {
             ALAssetsLibrary *libary = [[ALAssetsLibrary alloc]init];
             [libary assetForURL:_imgM.url resultBlock:^(ALAsset *asset) {
-                UIImage *image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullResolutionImage]];
+                UIImage *image = [UIImage imageWithCGImage:[[asset defaultRepresentation] fullScreenImage]];
                 __strong __typeof (weekSelf)strongSelf = weekSelf;
                 [strongSelf requestResult:image];
             } failureBlock:^(NSError *error) {
@@ -189,6 +189,15 @@
     rct.origin.x = MAX((Wo-W)*0.5, 0);
     rct.origin.y = MAX((Ho-H)*0.5, 0);
     _imgView.frame = rct;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (scrollView.isDragging) {
+        if (scrollView.bounds.size.width <= scrollView.contentSize.width) {
+            self.scrollEnabled = NO;
+            self.scrollEnabled = YES;
+        }
+    }
 }
 
 #pragma mark - Image Save (图像保存)

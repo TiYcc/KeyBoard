@@ -9,6 +9,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface YTDeviceTest : NSObject
 
 /**判断相册是否被允许访问 返回YES为允许访问*/
@@ -19,4 +20,7 @@
 
 /**判断麦克风是否被允许访问 返回YES为允许访问*/
 + (BOOL)userAuthorizationAudioStatus;
+
+/***/
+
 @end

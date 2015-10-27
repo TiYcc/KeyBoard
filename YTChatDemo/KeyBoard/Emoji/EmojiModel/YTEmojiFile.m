@@ -56,6 +56,7 @@
     NSMutableArray *emojiFS = [NSMutableArray array];
     NSString *filePath = [[NSBundle mainBundle]pathForResource:@"EmojiFile" ofType:@"plist"];
     
+    
     NSArray *files = [NSArray arrayWithContentsOfFile:filePath];
     for (NSDictionary *dic in files) {
         YTEmojiFileM *ef = [[YTEmojiFileM alloc]init];
