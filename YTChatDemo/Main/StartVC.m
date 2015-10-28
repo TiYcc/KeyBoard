@@ -7,15 +7,16 @@
 //
 
 #import "NSManagedObject+YTMoreThread.h"
-#import "YTImageBrowerController.h"
+#import "YTImgBrowerController.h"
 #import "YTKeyBoardView.h"
 #import "YTDeviceTest.h"
+#import "YTImgInfo.h"
 #import "Defines.h"
 #import "StartVC.h"
 #import "Message.h"
 @import AssetsLibrary;
 
-@interface StartVC ()<YTKeyBoardDelegate,UITableViewDataSource,UITableViewDelegate,YTImageBrowerControllerDelegate>
+@interface StartVC ()<YTKeyBoardDelegate,UITableViewDataSource,UITableViewDelegate,YTImgBrowerControllerDelegate>
 {
     BOOL typeChange;
 }
@@ -23,7 +24,7 @@
 @property (nonatomic, strong) YTKeyBoardView *keyBoard;
 @property (nonatomic, strong) NSMutableArray *infoArray;
 
-@property (nonatomic, strong) YTImageBrowerController *ImgBrower;
+@property (nonatomic, strong) YTImgBrowerController *ImgBrower;
 @end
 
 @implementation StartVC
@@ -207,7 +208,11 @@ static NSString * cellID = @"cellID";
                 }
             }];
         }else{
-            self.ImgBrower = [[YTImageBrowerController alloc]initWithDelegate:self Assets:assets PageIndex:MIN(3, assets.count-1)];
+            if (self.ImgBrower) {
+                self.ImgBrower = nil;
+            }
+            NSArray *imgInfos = [YTImgInfo imgInfosWithImgs:nil urls:assets type:YTImgInfoFromeTypePhoto];
+            self.ImgBrower = [[YTImgBrowerController alloc]initWithDelegate:self imgInfos:imgInfos index:0];
             return ;
         }
     } failureBlock:^(NSError *error) {
@@ -215,12 +220,12 @@ static NSString * cellID = @"cellID";
     }];
 }
 
-- (void)ACDSeeControllerInitEnd:(CGSize)size{
+- (void)imgBrowerControllerInitEnd:(YTImgInfo *)imgInfo{
     [self presentViewController:self.ImgBrower animated:YES completion:^{
     }];
 }
 
-- (void)ACDSeeControllerWillDismiss:(CGSize)size Img:(UIImage *)img Index:(NSInteger)index{
+- (void)imgBrowerControllerWillDismiss:(YTImgInfo *)imgInfo{
     self.tableView.backgroundColor = [UIColor whiteColor];
 }
 

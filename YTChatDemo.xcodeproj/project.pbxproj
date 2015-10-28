@@ -11,6 +11,9 @@
 		508608FE1B9BD6FE00315345 /* UIImage+YTGif.m in Sources */ = {isa = PBXBuildFile; fileRef = 508608FD1B9BD6FE00315345 /* UIImage+YTGif.m */; };
 		508609051B9C234B00315345 /* grinning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 508609031B9C234B00315345 /* grinning@2x.png */; };
 		508609061B9C234B00315345 /* girl_beg@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = 508609041B9C234B00315345 /* girl_beg@2x.gif */; };
+		5097F0451BE0797600201674 /* YTImgBrowerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5097F0401BE0797600201674 /* YTImgBrowerController.m */; };
+		5097F0461BE0797600201674 /* YTImgInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5097F0421BE0797600201674 /* YTImgInfo.m */; };
+		5097F0471BE0797600201674 /* YTImgScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 5097F0441BE0797600201674 /* YTImgScroll.m */; };
 		50989FB71B93DFED004108FB /* smile@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 50989F9B1B93DFEC004108FB /* smile@2x.png */; };
 		50989FB81B93DFED004108FB /* EmojiFile.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50989F9C1B93DFED004108FB /* EmojiFile.plist */; };
 		50989FB91B93DFED004108FB /* EmojiGirl.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50989F9D1B93DFED004108FB /* EmojiGirl.plist */; };
@@ -37,9 +40,6 @@
 		50C196411B96CEBB001E70A5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C196371B96CEBB001E70A5 /* main.m */; };
 		50C196421B96CEBB001E70A5 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C196391B96CEBB001E70A5 /* Message.m */; };
 		50C196431B96CEBB001E70A5 /* YTChatDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 50C1963A1B96CEBB001E70A5 /* YTChatDemo.xcdatamodeld */; };
-		50C196591B96D39D001E70A5 /* YTImageBrowerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C196481B96D39D001E70A5 /* YTImageBrowerController.m */; };
-		50C1965A1B96D39D001E70A5 /* YTImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C1964A1B96D39D001E70A5 /* YTImageModel.m */; };
-		50C1965B1B96D39D001E70A5 /* YTImageScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C1964C1B96D39D001E70A5 /* YTImageScroll.m */; };
 		50C196621B96D710001E70A5 /* YTCoreData.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C196611B96D710001E70A5 /* YTCoreData.m */; };
 		50C196651B96D849001E70A5 /* NSManagedObject+YTMoreThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C196641B96D849001E70A5 /* NSManagedObject+YTMoreThread.m */; };
 		50C196741B96DD54001E70A5 /* NSDictionary+YTSafe.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C196681B96DD54001E70A5 /* NSDictionary+YTSafe.m */; };
@@ -70,6 +70,12 @@
 		508608FD1B9BD6FE00315345 /* UIImage+YTGif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+YTGif.m"; sourceTree = "<group>"; };
 		508609031B9C234B00315345 /* grinning@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grinning@2x.png"; sourceTree = "<group>"; };
 		508609041B9C234B00315345 /* girl_beg@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "girl_beg@2x.gif"; sourceTree = "<group>"; };
+		5097F03F1BE0797600201674 /* YTImgBrowerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTImgBrowerController.h; sourceTree = "<group>"; };
+		5097F0401BE0797600201674 /* YTImgBrowerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTImgBrowerController.m; sourceTree = "<group>"; };
+		5097F0411BE0797600201674 /* YTImgInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTImgInfo.h; sourceTree = "<group>"; };
+		5097F0421BE0797600201674 /* YTImgInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTImgInfo.m; sourceTree = "<group>"; };
+		5097F0431BE0797600201674 /* YTImgScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTImgScroll.h; sourceTree = "<group>"; };
+		5097F0441BE0797600201674 /* YTImgScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTImgScroll.m; sourceTree = "<group>"; };
 		50989F9B1B93DFEC004108FB /* smile@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smile@2x.png"; sourceTree = "<group>"; };
 		50989F9C1B93DFED004108FB /* EmojiFile.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmojiFile.plist; sourceTree = "<group>"; };
 		50989F9D1B93DFED004108FB /* EmojiGirl.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EmojiGirl.plist; sourceTree = "<group>"; };
@@ -113,12 +119,6 @@
 		50C196381B96CEBB001E70A5 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
 		50C196391B96CEBB001E70A5 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
 		50C1963B1B96CEBB001E70A5 /* YTChatDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = YTChatDemo.xcdatamodel; sourceTree = "<group>"; };
-		50C196471B96D39D001E70A5 /* YTImageBrowerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTImageBrowerController.h; sourceTree = "<group>"; };
-		50C196481B96D39D001E70A5 /* YTImageBrowerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTImageBrowerController.m; sourceTree = "<group>"; };
-		50C196491B96D39D001E70A5 /* YTImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTImageModel.h; sourceTree = "<group>"; };
-		50C1964A1B96D39D001E70A5 /* YTImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTImageModel.m; sourceTree = "<group>"; };
-		50C1964B1B96D39D001E70A5 /* YTImageScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTImageScroll.h; sourceTree = "<group>"; };
-		50C1964C1B96D39D001E70A5 /* YTImageScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTImageScroll.m; sourceTree = "<group>"; };
 		50C196601B96D710001E70A5 /* YTCoreData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YTCoreData.h; sourceTree = "<group>"; };
 		50C196611B96D710001E70A5 /* YTCoreData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTCoreData.m; sourceTree = "<group>"; };
 		50C196631B96D849001E70A5 /* NSManagedObject+YTMoreThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+YTMoreThread.h"; sourceTree = "<group>"; };
@@ -178,9 +178,9 @@
 		50724F5B1B8B0EDB00EA425A /* YTChatDemo */ = {
 			isa = PBXGroup;
 			children = (
+				5097F03E1BE0797600201674 /* ImgBrower */,
 				50C1967A1B96DD8A001E70A5 /* HUD(第三方) */,
 				50C1962C1B96CEBB001E70A5 /* Main(入口) */,
-				50C196441B96D39D001E70A5 /* ACDSee(图片浏览模块) */,
 				50C1964F1B96D39D001E70A5 /* Tools(coreData,类扩展,简单功能模块) */,
 				5095ACBA1B8D8ECB00BBEDC2 /* KeyBoard(键盘模块) */,
 				50C196311B96CEBB001E70A5 /* Supporting Files */,
@@ -216,6 +216,19 @@
 			);
 			name = "KeyBoard(键盘模块)";
 			path = KeyBoard;
+			sourceTree = "<group>";
+		};
+		5097F03E1BE0797600201674 /* ImgBrower */ = {
+			isa = PBXGroup;
+			children = (
+				5097F03F1BE0797600201674 /* YTImgBrowerController.h */,
+				5097F0401BE0797600201674 /* YTImgBrowerController.m */,
+				5097F0411BE0797600201674 /* YTImgInfo.h */,
+				5097F0421BE0797600201674 /* YTImgInfo.m */,
+				5097F0431BE0797600201674 /* YTImgScroll.h */,
+				5097F0441BE0797600201674 /* YTImgScroll.m */,
+			);
+			path = ImgBrower;
 			sourceTree = "<group>";
 		};
 		50989F971B93DFEC004108FB /* Emoji */ = {
@@ -319,20 +332,6 @@
 				50C196371B96CEBB001E70A5 /* main.m */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		50C196441B96D39D001E70A5 /* ACDSee(图片浏览模块) */ = {
-			isa = PBXGroup;
-			children = (
-				50C196471B96D39D001E70A5 /* YTImageBrowerController.h */,
-				50C196481B96D39D001E70A5 /* YTImageBrowerController.m */,
-				50C196491B96D39D001E70A5 /* YTImageModel.h */,
-				50C1964A1B96D39D001E70A5 /* YTImageModel.m */,
-				50C1964B1B96D39D001E70A5 /* YTImageScroll.h */,
-				50C1964C1B96D39D001E70A5 /* YTImageScroll.m */,
-			);
-			name = "ACDSee(图片浏览模块)";
-			path = ACDSee;
 			sourceTree = "<group>";
 		};
 		50C1964F1B96D39D001E70A5 /* Tools(coreData,类扩展,简单功能模块) */ = {
@@ -505,6 +504,7 @@
 				50989FC21B93DFED004108FB /* YTEmojiBottom.m in Sources */,
 				50C196751B96DD54001E70A5 /* UIColor+YTBacal.m in Sources */,
 				50C196791B96DD54001E70A5 /* YTNetworkLoad.m in Sources */,
+				5097F0461BE0797600201674 /* YTImgInfo.m in Sources */,
 				50C1963C1B96CEBB001E70A5 /* AppDelegate.m in Sources */,
 				50989FC11B93DFED004108FB /* YTEmojiM.m in Sources */,
 				50C196651B96D849001E70A5 /* NSManagedObject+YTMoreThread.m in Sources */,
@@ -516,9 +516,9 @@
 				50C196421B96CEBB001E70A5 /* Message.m in Sources */,
 				50C196761B96DD54001E70A5 /* UIColor+YTKeyBoard.m in Sources */,
 				50C196621B96D710001E70A5 /* YTCoreData.m in Sources */,
-				50C196591B96D39D001E70A5 /* YTImageBrowerController.m in Sources */,
 				50989FBD1B93DFED004108FB /* YTEmoji.m in Sources */,
 				50A5D4061B95659A006FC761 /* YTMoreView.m in Sources */,
+				5097F0451BE0797600201674 /* YTImgBrowerController.m in Sources */,
 				50989FBF1B93DFED004108FB /* YTEmojiFile.m in Sources */,
 				5098A0081B945C7D004108FB /* YTTextView.m in Sources */,
 				50989FC41B93DFED004108FB /* YTEmojiPage.m in Sources */,
@@ -526,9 +526,8 @@
 				508608FE1B9BD6FE00315345 /* UIImage+YTGif.m in Sources */,
 				50C196771B96DD54001E70A5 /* UIView+YTLayer.m in Sources */,
 				50C196741B96DD54001E70A5 /* NSDictionary+YTSafe.m in Sources */,
-				50C1965B1B96D39D001E70A5 /* YTImageScroll.m in Sources */,
+				5097F0471BE0797600201674 /* YTImgScroll.m in Sources */,
 				5098A0041B945BE1004108FB /* YTKeyBoardView.m in Sources */,
-				50C1965A1B96D39D001E70A5 /* YTImageModel.m in Sources */,
 				5098A00B1B945CE4004108FB /* YTTextAttachment.m in Sources */,
 				50C1963D1B96CEBB001E70A5 /* StartVC.m in Sources */,
 				50989FC51B93DFED004108FB /* YTEmojiView.m in Sources */,
