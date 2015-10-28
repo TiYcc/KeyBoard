@@ -198,6 +198,7 @@ static NSString * cellID = @"cellID";
  写的，仅仅作为了解，还是值得一看的。
  */
 - (void)seePhoto{
+    self.navigationItem.leftBarButtonItem.enabled = NO;
     NSMutableArray *assets = [NSMutableArray array];
     ALAssetsLibrary *assetsLibrary = [[ALAssetsLibrary alloc]init];
     [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
@@ -222,6 +223,7 @@ static NSString * cellID = @"cellID";
 
 - (void)imgBrowerControllerInitEnd:(YTImgInfo *)imgInfo{
     [self presentViewController:self.ImgBrower animated:YES completion:^{
+        self.navigationItem.leftBarButtonItem.enabled = YES;
     }];
 }
 

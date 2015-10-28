@@ -62,7 +62,7 @@
 @property (nonatomic, strong) NSArray *icons;  //图标集合
 
 @property (nonatomic, assign) id<YTKeyBoardDelegate> delegate; //代理
-@property (nonatomic, strong) YTTextView * textView; //输入框
+@property (nonatomic, strong) YTTextView *textView; //输入框
 @property (nonatomic, strong) UIButton *audioBt; //音频录制开关
 @property (nonatomic, strong) UIView *bottomView; //底部各种切换控件
 
@@ -318,7 +318,7 @@
             attributeString = [[NSMutableAttributedString alloc]initWithAttributedString:self.textView.attributedText];
         }
         
-        BOOL insert = [YTTextView insertAttri:attributeString imageName:emoji.emojiImage font:self.textView.font offset:-2.5];
+        BOOL insert = [YTTextView insertAttri:attributeString imageName:emoji.emojiImage font:self.textView.font offset:0];
         if (attribu) {
             [attributeString appendAttributedString:attribu];
         }
@@ -449,23 +449,23 @@
 }
 
 - (void)textChange{
-    CGFloat h = [self.textView.layoutManager usedRectForTextContainer:self.textView.textContainer].size.height;
-    self.textView.contentSize = CGSizeMake(self.textView.contentSize.width, h+TEXT_FIT);
+    CGFloat H = [self.textView.layoutManager usedRectForTextContainer:self.textView.textContainer].size.height;
+    self.textView.contentSize = CGSizeMake(self.textView.contentSize.width, H+TEXT_FIT);
     CGFloat five_h = text_one_hight*5.0f;
-    h = h>five_h?five_h:h;
+    H = H>five_h?five_h:H;
     CGRect frame = self.textView.frame;
     CGFloat diff = self.topView.frame.size.height - self.textView.frame.size.height;
     
-    if (frame.size.height == h+TEXT_FIT) {
+    if (frame.size.height == H+TEXT_FIT) {
         CGPoint cursorPosition = [self.textView caretRectForPosition:self.textView.selectedTextRange.start].origin;
-        if ((h == five_h) && (cursorPosition.y > five_h)) {
-            CGFloat offsitY = cursorPosition.y < (self.textView.contentSize.height - h/5.0f)?(cursorPosition.y - h/2.5):(self.textView.contentSize.height - (h + TEXT_FIT));
+        if ((H == five_h) && (cursorPosition.y > five_h)) {
+            CGFloat offsitY = cursorPosition.y < (self.textView.contentSize.height - H/5.0f)?(cursorPosition.y - H/2.5):(self.textView.contentSize.height - (H + TEXT_FIT));
             [self.textView setContentOffset:CGPointMake(0, offsitY) animated:NO];
         }
         return;
     }
     
-    frame.size.height = h+TEXT_FIT;
+    frame.size.height = H+TEXT_FIT;
     self.textView.frame = frame;
     [self.textView setContentOffset:CGPointZero animated:YES];
     [self topLayoutSubViewWithH:(frame.size.height+diff)];
