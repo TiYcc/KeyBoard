@@ -19,22 +19,21 @@
     return self;
 }
 
-- (void)insertAttri:(NSMutableAttributedString *)attri font:(UIFont *)font offset:(CGFloat)offset{
+- (void)insertAttri:(NSMutableAttributedString *)attri font:(UIFont *)font{
    
     [attri appendAttributedString:[NSAttributedString attributedStringWithAttachment:self]];
     NSRange range = NSMakeRange(attri.length-1, 1);
     NSParagraphStyle * paragraph = [NSParagraphStyle defaultParagraphStyle];
     NSDictionary * attrs = @{NSAttachmentAttributeName:self,
                              NSFontAttributeName:font,
-                             NSBaselineOffsetAttributeName:[NSNumber numberWithInt:offset],
                              NSParagraphStyleAttributeName:paragraph};
     [attri setAttributes:attrs range:range];
 }
 
-// 重写表情加入字符串位置具体信息
+// 重写表情加入字符串位置具体信息 可根据具体情况设置不同位置
 - (CGRect)attachmentBoundsForTextContainer:(NSTextContainer *)textContainer proposedLineFragment:(CGRect)lineFrag glyphPosition:(CGPoint)position characterIndex:(NSUInteger)charIndex{
     
-    return CGRectMake(0, 0, lineFrag.size.height, lineFrag.size.height);
+    return CGRectMake(0, -2, lineFrag.size.height-2, lineFrag.size.height-2);
 }
 
 @end

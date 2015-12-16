@@ -6,6 +6,7 @@
 //  Copyright (c) 2015年 YccTime. All rights reserved.
 //
 
+#import "SLGrowingTextView.h"
 #import "YTKeyBoardView.h"
 #import "UIView+YTLayer.h"
 #import "UIImage+YTGif.h"
@@ -39,12 +40,12 @@
 
 @end
 
-@interface YTKeyBoardView()<UITextViewDelegate,YTEmojiViewDelegate,YTMoreViewDelegate>{
+@interface YTKeyBoardView()<SLGrowingTextViewDelegate,YTEmojiViewDelegate,YTMoreViewDelegate>{
     /* topView 一些设置全局参数 */
     CGFloat top_end_h; // textView 隐藏前的高度
     
     /* textView 一些设置全局参数 */
-    CGFloat text_one_hight; // 一行文字高度
+    //CGFloat text_one_hight; // 一行文字高度
     NSUInteger text_location; // 将要插入表情时 记录最后光标位置
     BOOL text_beInsert; // 记录光标位置后 是否允许插入表情
     
@@ -62,7 +63,7 @@
 @property (nonatomic, strong) NSArray *icons;  //图标集合
 
 @property (nonatomic, assign) id<YTKeyBoardDelegate> delegate; //代理
-@property (nonatomic, strong) YTTextView *textView; //输入框
+@property (nonatomic, strong) SLGrowingTextView *textView; //输入框
 @property (nonatomic, strong) UIButton *audioBt; //音频录制开关
 @property (nonatomic, strong) UIView *bottomView; //底部各种切换控件
 
@@ -74,11 +75,11 @@
 
 @implementation YTKeyBoardView
 
-#define   KB_WIDTH     ([UIScreen mainScreen].bounds.size.width)
+#define   KB_WIDTH    ([UIScreen mainScreen].bounds.size.width)
 /* 小图标(录音,表情,更多)位置参数 */
-#define   ICON_LR    12.0f //左右边距
-#define   ICON_TOP   8.0f  //顶端边距
-#define   ICON_WH    28.0f //宽高
+#define   ICON_LR     12.0f //左右边距
+#define   ICON_TOP    8.0f  //顶端边距
+#define   ICON_WH     28.0f //宽高
 /* textView 高度默认补充 为了显示更好看 */
 #define   TOP_H       44.0f
 #define   TEXT_FIT    10.0f
@@ -98,7 +99,7 @@
     [self addTopAndBottom];
     [self addIcons];
     [self addTextView];
-    [self addAudionButton];
+    //[self addAudionButton];
     [self addContentView];
 }
 
@@ -127,28 +128,32 @@
     [emoji setImage:[UIImage imageNamed:@"btn_face"] forState:UIControlStateNormal];
     [more setImage:[UIImage imageNamed:@"btn_more"] forState:UIControlStateNormal];
     
-    self.icons = @[audio,emoji,more];
+    self.icons = @[emoji,more];// audio
     for (UIButton * bt in self.icons) {
         [bt setImage:[UIImage imageNamed:@"btn_key"] forState:UIControlStateSelected];
         [bt addTarget:self action:@selector(iconsAction:) forControlEvents:UIControlEventTouchUpInside];
         [self.topView addSubview:bt];
     }
-    self.audio = audio;
+    //self.audio = audio;
     self.emoji = emoji;
     self.more = more;
 }
 
 - (void)addTextView{
-    YTTextView * text = [[YTTextView alloc]init];
+    SLGrowingTextView * text = [[SLGrowingTextView alloc]init];
     text.delegate = self;
     text.returnKeyType = UIReturnKeySend;
     text.enablesReturnKeyAutomatically = YES;
-    text.font = [UIFont systemFontOfSize:15.0f];
+    text.font = [UIFont systemFontOfSize:16.0f];
+    text.minNumberOfLines = 1;
+    text.maxNumberOfLines = 5;
     text.backgroundColor = [UIColor whiteColor];
-    text.textContainerInset = UIEdgeInsetsMake(5, 0, 0, 0);
     [text cornerRadius:5.0f borderColor:[UIColor grayColor] borderWidth:0.5f];
-    text_one_hight = [text.layoutManager usedRectForTextContainer:text.textContainer].size.height;
-    text.frame = CGRectMake(CGRectGetMaxX(self.audio.frame)+ICON_LR, ICON_TOP, KB_WIDTH-ICON_WH*3.0f-ICON_LR*5.0f, text_one_hight+TEXT_FIT);
+    CGFloat hight = [text sizeThatFits:CGSizeMake(KB_WIDTH-ICON_WH*2.0f-ICON_LR*4.0f, CGFLOAT_MAX)].height;
+    text.frame = CGRectMake(CGRectGetMaxX(self.audio.frame)+ICON_LR, ICON_TOP, KB_WIDTH-ICON_WH*2.0f-ICON_LR*4.0f, hight);
+    CGFloat insetsTB = (TOP_H - ICON_TOP*2 - hight)*0.5;
+    text.contentInset = UIEdgeInsetsMake(insetsTB, 2, insetsTB, 2);
+    [text sizeToFit];
     [self.topView addSubview:text];
     self.textView = text;
 }
@@ -310,21 +315,20 @@
         NSAttributedString *attribu = nil;
         if (text_beInsert) {
             NSRange range = NSMakeRange(0, text_location);
-            attributeString = [[NSMutableAttributedString alloc]initWithAttributedString:[self.textView.attributedText attributedSubstringFromRange:range]];
-            range = NSMakeRange(text_location, self.textView.attributedText.length-text_location);
-            attribu = [[self.textView.attributedText attributedSubstringFromRange:range] mutableCopy];
+            attributeString = [[NSMutableAttributedString alloc]initWithAttributedString:[self.textView.internalTextView.attributedText attributedSubstringFromRange:range]];
+            range = NSMakeRange(text_location, self.textView.internalTextView.attributedText.length-text_location);
+            attribu = [[self.textView.internalTextView.attributedText attributedSubstringFromRange:range] mutableCopy];
             text_beInsert = NO;
         }else{
-            attributeString = [[NSMutableAttributedString alloc]initWithAttributedString:self.textView.attributedText];
+            attributeString = [[NSMutableAttributedString alloc]initWithAttributedString:self.textView.internalTextView.attributedText];
         }
         
-        BOOL insert = [YTTextView insertAttri:attributeString imageName:emoji.emojiImage font:self.textView.font offset:0];
+        BOOL insert = [YTTextView insertAttri:attributeString imageName:emoji.emojiImage font:self.textView.font];
         if (attribu) {
             [attributeString appendAttributedString:attribu];
         }
         if (insert) {
-            self.textView.attributedText = attributeString;
-            [self textChange];
+            self.textView.internalTextView.attributedText = attributeString;
         }
     }
 }
@@ -338,11 +342,10 @@
     range.location = location-1;
     range.length = 1;
     
-    NSMutableAttributedString *attStr = [self.textView.attributedText mutableCopy];
+    NSMutableAttributedString *attStr = [self.textView.internalTextView.attributedText mutableCopy];
     [attStr deleteCharactersInRange:range];
-    self.textView.attributedText = attStr;
+    self.textView.internalTextView.attributedText = attStr;
     self.textView.selectedRange = range;
-    [self textChange];
 }
 
 - (void)emojiViewSend{
@@ -350,8 +353,8 @@
 }
 
 #pragma mark - text View Delegate
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
-    if(![textView hasText] && [text isEqualToString:@""]) {
+- (BOOL)growingTextView:(SLGrowingTextView *)growingTextView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if(![growingTextView hasText] && [text isEqualToString:@""]) {
         return NO;
     }
     if ([text isEqualToString:@"\n"]) {
@@ -361,8 +364,13 @@
     return YES;
 }
 
--(void)textViewDidChange:(UITextView *)textView{
-    [self textChange];
+- (void)growingTextView:(SLGrowingTextView *)growingTextView shouldChangeHeight:(CGFloat)height{
+    CGRect frame = self.textView.frame;
+    frame.size.height = height;
+    [UIView animateWithDuration:DURTAION animations:^{
+        self.textView.frame = frame;
+        [self topLayoutSubViewWithH:(frame.size.height+ICON_TOP*2)];
+    }];
 }
 
 -(void)audionRecord:(UILongPressGestureRecognizer*)longPress{
@@ -426,14 +434,13 @@
     if (![self.textView hasText]&&(self.textView.text.length==0)) {
         return;
     }
-    NSString *plainText = self.textView.clearText;
+    NSString *plainText = self.textView.internalTextView.clearText;
     //空格处理
     plainText = [plainText stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     
     if (plainText.length > 0) {
         [self sendResous:plainText];
         self.textView.text = @"";
-        [self textChange];
     }
 }
 
@@ -446,29 +453,6 @@
     }else{
         [self.textView resignFirstResponder];
     }
-}
-
-- (void)textChange{
-    CGFloat H = [self.textView.layoutManager usedRectForTextContainer:self.textView.textContainer].size.height;
-    self.textView.contentSize = CGSizeMake(self.textView.contentSize.width, H+TEXT_FIT);
-    CGFloat five_h = text_one_hight*5.0f;
-    H = H>five_h?five_h:H;
-    CGRect frame = self.textView.frame;
-    CGFloat diff = self.topView.frame.size.height - self.textView.frame.size.height;
-    
-    if (frame.size.height == H+TEXT_FIT) {
-        CGPoint cursorPosition = [self.textView caretRectForPosition:self.textView.selectedTextRange.start].origin;
-        if ((H == five_h) && (cursorPosition.y > five_h)) {
-            CGFloat offsitY = cursorPosition.y < (self.textView.contentSize.height - H/5.0f)?(cursorPosition.y - H/2.5):(self.textView.contentSize.height - (H + TEXT_FIT));
-            [self.textView setContentOffset:CGPointMake(0, offsitY) animated:NO];
-        }
-        return;
-    }
-    
-    frame.size.height = H+TEXT_FIT;
-    self.textView.frame = frame;
-    [self.textView setContentOffset:CGPointZero animated:YES];
-    [self topLayoutSubViewWithH:(frame.size.height+diff)];
 }
 
 #pragma mark - self delegate action

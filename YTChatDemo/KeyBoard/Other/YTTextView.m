@@ -53,7 +53,7 @@
         [theScanner scanUpToString:@"]" intoString:&text];
         if (text && ![text isEqualToString:@"]"] && (text.length > 0)) {
             NSString *imageName = [text substringFromIndex:1];
-            BOOL insert= [[self class]insertAttri:attributeString imageName:imageName font:font offset:offset];
+            BOOL insert= [[self class]insertAttri:attributeString imageName:imageName font:font];
             if (!insert) {
                 NSString *txt = [NSString stringWithFormat:@"%@]", text];
                 NSDictionary *attrs = nil;
@@ -77,13 +77,13 @@
     return attributeString;
 }
 
-+ (BOOL)insertAttri:(NSMutableAttributedString *)attri imageName:(NSString *)imageName font:(UIFont *)font offset:(CGFloat)offect{
++ (BOOL)insertAttri:(NSMutableAttributedString *)attri imageName:(NSString *)imageName font:(UIFont *)font{
     NSData *data = UIImagePNGRepresentation([UIImage imageNamed:imageName]);
     YTTextAttachment *attach = [[YTTextAttachment alloc] initWithData:data ofType:nil];
     if (attach.image && attach.image.size.width > 1.0f) {
         // 表情插入strat
         attach.emojiCode = [NSString stringWithFormat:@"[%@]", imageName];
-        [attach insertAttri:attri font:font offset:offect];
+        [attach insertAttri:attri font:font];
         return YES;
         // 表情图片插入end
     }else{

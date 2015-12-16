@@ -21,6 +21,6 @@
 + (NSAttributedString *)getAttributedText:(NSString *)source Font:(UIFont *)font Color:(UIColor *)color Offset:(CGFloat)offset;
 
 // 快速插入一个表情
-+ (BOOL)insertAttri:(NSMutableAttributedString *)attri imageName:(NSString *)imageName font:(UIFont *)font offset:(CGFloat)offect;
++ (BOOL)insertAttri:(NSMutableAttributedString *)attri imageName:(NSString *)imageName font:(UIFont *)font;
 
 @end

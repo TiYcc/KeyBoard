@@ -49,6 +49,7 @@
 		50C196781B96DD54001E70A5 /* YTDeviceTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C196711B96DD54001E70A5 /* YTDeviceTest.m */; };
 		50C196791B96DD54001E70A5 /* YTNetworkLoad.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C196731B96DD54001E70A5 /* YTNetworkLoad.m */; };
 		50C1967D1B96DD8A001E70A5 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 50C1967C1B96DD8A001E70A5 /* MBProgressHUD.m */; };
+		50F09E761C2103520056180B /* SLGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F09E751C2103520056180B /* SLGrowingTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,8 @@
 		50C196731B96DD54001E70A5 /* YTNetworkLoad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YTNetworkLoad.m; sourceTree = "<group>"; };
 		50C1967B1B96DD8A001E70A5 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		50C1967C1B96DD8A001E70A5 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		50F09E741C2103520056180B /* SLGrowingTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLGrowingTextView.h; sourceTree = "<group>"; };
+		50F09E751C2103520056180B /* SLGrowingTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SLGrowingTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -301,6 +304,8 @@
 			children = (
 				5098A0061B945C7D004108FB /* YTTextView.h */,
 				5098A0071B945C7D004108FB /* YTTextView.m */,
+				50F09E741C2103520056180B /* SLGrowingTextView.h */,
+				50F09E751C2103520056180B /* SLGrowingTextView.m */,
 				5098A0091B945CE4004108FB /* YTTextAttachment.h */,
 				5098A00A1B945CE4004108FB /* YTTextAttachment.m */,
 			);
@@ -511,6 +516,7 @@
 				50C196431B96CEBB001E70A5 /* YTChatDemo.xcdatamodeld in Sources */,
 				50C1967D1B96DD8A001E70A5 /* MBProgressHUD.m in Sources */,
 				50C196781B96DD54001E70A5 /* YTDeviceTest.m in Sources */,
+				50F09E761C2103520056180B /* SLGrowingTextView.m in Sources */,
 				50C196411B96CEBB001E70A5 /* main.m in Sources */,
 				50989FC01B93DFED004108FB /* YTEmojiIconM.m in Sources */,
 				50C196421B96CEBB001E70A5 /* Message.m in Sources */,

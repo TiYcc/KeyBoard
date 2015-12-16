@@ -13,5 +13,5 @@
 @property (nonatomic, strong) NSString *emojiCode; //编码字符
 
 /** 插入表情到attri中 */
-- (void)insertAttri:(NSMutableAttributedString *)attri font:(UIFont *)font offset:(CGFloat)offset;
+- (void)insertAttri:(NSMutableAttributedString *)attri font:(UIFont *)font;
 @end

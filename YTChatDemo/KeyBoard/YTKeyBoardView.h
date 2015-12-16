@@ -33,9 +33,6 @@
 // 创建键盘快捷方法
 - (instancetype)initDelegate:(id)delegate superView:(UIView *)superView;
 
-// 键盘输入框内容发生变化
-- (void)textChange;
-
 // 点击，键盘回到底部
 - (void)tapAction;
 @end
